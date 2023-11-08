@@ -10,7 +10,7 @@ async def creeate_new_test(session: AsyncSession, test_in: CreateTest) -> Test:
         test = Test(**test_in.model_dump())
         session.add(test)
         await session.commit()
-        # await session.refresh(test)
+        # await session.refresh(test)   
         return test
 
 

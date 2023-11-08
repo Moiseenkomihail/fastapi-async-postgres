@@ -1,3 +1,4 @@
+from os import error
 from fastapi import Depends, FastAPI, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -20,8 +21,10 @@ async def create_test(
     test_model_request: CreateTest,
     the_session: AsyncSession = Depends(get_session),
 ):
-    data = creeate_new_test(test_in=test_model_request, session=the_session)
-    return data
+    try:
+        return await creeate_new_test(test_in=test_model_request, session=the_session) 
+    except:
+        return {'eror': 'error'}
 
     # test = Test(**test_in.model_dump())
     # session.add(test)
