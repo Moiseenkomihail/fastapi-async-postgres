@@ -26,14 +26,6 @@ async def create_test(
     except:
         return {'eror': 'error'}
 
-    # test = Test(**test_in.model_dump())
-    # session.add(test)
-    # await session.commit()
-    # # await session.refresh(test)
-    # return test
-
-# @app.get('/get_test', response_model=list(Test))
-
 
 if __name__ == '__main__':
     uvicorn.run("main:app", reload=True)
